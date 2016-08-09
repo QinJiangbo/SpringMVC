@@ -54,7 +54,6 @@ public class SpringCr {
                              @RequestBody HashMap<String, Object> params) {
         List<Long> userIds = (ArrayList<Long>) params.get("userIds");
         List<SysUser> sysUsers = sysUserService.findSysUsers(userIds);
-
         return sysUsers;
     }
 
