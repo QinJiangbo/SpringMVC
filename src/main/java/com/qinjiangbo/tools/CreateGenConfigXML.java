@@ -1,4 +1,4 @@
-package com.qinjiangbo.main;
+package com.qinjiangbo.tools;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -8,9 +8,7 @@ import org.dom4j.io.XMLWriter;
 import org.springframework.util.StringUtils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.UnsupportedEncodingException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,7 +89,7 @@ public class CreateGenConfigXML {
         //create javaModelGenerator node
         Element javaModelGenerator = context.addElement("javaModelGenerator");
         javaModelGenerator.addAttribute("targetPackage","com.qinjiangbo.gen.model");
-        javaModelGenerator.addAttribute("targetProject","src/main/java");
+        javaModelGenerator.addAttribute("targetProject", "src/tools/java");
         Element property3 = javaModelGenerator.addElement("property");
         property3.addAttribute("name","enableSubPackages");
         property3.addAttribute("value","true");
@@ -99,7 +97,7 @@ public class CreateGenConfigXML {
         //create sqlMapGenerator node
         Element sqlMapGenerator = context.addElement("sqlMapGenerator");
         sqlMapGenerator.addAttribute("targetPackage","com.qinjiangbo.gen.dao");
-        sqlMapGenerator.addAttribute("targetProject","src/main/java");
+        sqlMapGenerator.addAttribute("targetProject", "src/tools/java");
         Element property4 = sqlMapGenerator.addElement("property");
         property4.addAttribute("name","enableSubPackages");
         property4.addAttribute("value","true");
@@ -108,7 +106,7 @@ public class CreateGenConfigXML {
         Element javaClientGenerator = context.addElement("javaClientGenerator");
         javaClientGenerator.addAttribute("type", "XMLMAPPER");
         javaClientGenerator.addAttribute("targetPackage","com.qinjiangbo.gen.dao");
-        javaClientGenerator.addAttribute("targetProject","src/main/java");
+        javaClientGenerator.addAttribute("targetProject", "src/tools/java");
         Element property5 = javaClientGenerator.addElement("property");
         property5.addAttribute("name","enableSubPackages");
         property5.addAttribute("value","true");
@@ -144,7 +142,7 @@ public class CreateGenConfigXML {
     public static void writeXML() throws Exception {
         XMLWriter xmlWriter = null;
         String userDir = System.getProperty("user.dir");
-        String fileName = userDir + "/src/main/resources/generatorConfiguration.xml";
+        String fileName = userDir + "/src/tools/resources/generatorConfiguration.xml";
         OutputFormat format = OutputFormat.createPrettyPrint();
         FileOutputStream fos = new FileOutputStream(new File(fileName));
         format.setEncoding("utf-8");
